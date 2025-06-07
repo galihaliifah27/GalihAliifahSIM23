@@ -159,7 +159,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a>Azka Yasyfa Fuadiah</a>
+          <a>Galih Aliifah S</a>
         </div>
       </div>
 
