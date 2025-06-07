@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Daftar Sales</h1>
+          <h1>Daftar Berita</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -20,7 +20,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">List Sales</h3>
+        <h3 class="card-title">List Berita</h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -29,7 +29,7 @@
             <i class="fas fa-times"></i> </button>
         </div>
       </div>
-      <h3>Laporan Sales dari <?= $tanggal_dari ?> sampai <?= $tanggal_sampai ?></h3>
+      <h3>Laporan Berita dari <?= $tanggal_dari ?> sampai <?= $tanggal_sampai ?></h3>
       <table id="datatable" border="1" cellpadding="5" cellspacing="0">
         <thead>
         <tr>
