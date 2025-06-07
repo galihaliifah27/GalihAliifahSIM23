@@ -13,11 +13,11 @@
                 <form action="<?= base_url('pelanggan/insert'); ?>" method="POST">
                     <div class="form-group">
                         <label for="nama">Nama Pelanggan</label>
-                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Contoh: Budi Santoso" required>
+                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Contob : Azka" required>
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Contoh: Jl. Merdeka No. 123" required>
+                        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Contoh: Jl. Kepo" required>
                     </div>
                     <div class="form-group">
                         <label for="no_telp">No Telepon</label>

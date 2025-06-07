@@ -16,9 +16,8 @@ class Produk extends MY_Controller {
     }
 
     public function tambah(){
-        $data['produk'] = $this->Produk_model->get_all_produk();
         $this->load->view('templates/header');
-        $this->load->view('produk/form_produk', $data);
+        $this->load->view('produk/form_produk');
         $this->load->view('templates/footer');
     }
 
@@ -61,19 +60,29 @@ class Produk extends MY_Controller {
     public function update($id){
         $this->form_validation->set_rules('kode_produk', 'Kode Produk', 'required');
         $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required');
-        $this->form_validation->set_rules('harga', 'Harga', 'required');
-        $this->form_validation->set_rules('stok', 'Stok', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+        $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
 
         if ($this->form_validation->run() === FALSE){
-            $this->edit($id);
+            return $this->edit($id);
         } else {
+            $kode_produk = $this->input->post('kode_produk');
+
+            // Cek apakah kode_produk sudah digunakan oleh produk lain
+            if ($this->Produk_model->cek_kode_produk_duplikat($kode_produk, $id)) {
+                $this->session->set_flashdata('error', 'Kode Produk sudah digunakan produk lain.');
+                return $this->edit($id);
+            }
+
             $data = [
-                'kode_produk' => $this->input->post('kode_produk'),
+                'kode_produk' => $kode_produk,
                 'nama_produk' => $this->input->post('nama_produk'),
                 'harga' => $this->input->post('harga'),
                 'stok' => $this->input->post('stok')
             ];
+
             $this->Produk_model->update_produk($id, $data);
+            $this->session->set_flashdata('success', 'Produk berhasil diperbarui.');
             redirect('produk');
         }
     }

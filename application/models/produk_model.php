@@ -23,4 +23,11 @@ class Produk_model extends CI_Model {
     public function delete_produk($idproduk){
         return $this->db->delete('produk', ['idproduk' => $idproduk]);
     }
+
+    public function cek_kode_produk_duplikat($kode_produk, $idproduk){
+        $this->db->where('kode_produk', $kode_produk);
+        $this->db->where('idproduk !=', $idproduk); 
+        $query = $this->db->get('produk');
+        return $query->num_rows() > 0;
+    }
 }

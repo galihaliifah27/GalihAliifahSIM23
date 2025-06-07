@@ -57,4 +57,24 @@ class Sales extends CI_Controller {
         $this->Sales_model->update_sales($id, $data);
         redirect('sales');
     }
-}
+      public function laporan()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('sales/laporan_form');
+        $this->load->view('templates/footer');
+    }
+
+    public function cetak_laporan()
+    {
+        $tanggal_dari = $this->input->post('tanggal_dari');
+        $tanggal_sampai = $this->input->post('tanggal_sampai');
+
+        $data['sales'] = $this->Sales_model->get_laporan_sales($tanggal_dari, $tanggal_sampai);
+        $data['tanggal_dari'] = $tanggal_dari;
+        $data['tanggal_sampai'] = $tanggal_sampai;
+        //print_r($data);
+        $this->load->view('templates/header');
+        $this->load->view('sales/laporan_hasil', $data);
+        $this->load->view('templates/footer');
+    }
+    }

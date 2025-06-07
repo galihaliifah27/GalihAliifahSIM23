@@ -23,4 +23,4 @@ class Sales_model extends CI_Model {
         $this->db->where('idsales', $id);
         return $this->db->update('sales', $data);
     }
-}
+    }
