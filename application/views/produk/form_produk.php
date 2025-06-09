@@ -12,15 +12,15 @@
                 <form action="<?= base_url('produk/insert'); ?>" method="POST">
                     <div class="form-group">
                         <label for="kode_produk">Kode Produk</label>
-                        <input type="text" name="kode_produk" id="kode_produk" class="form-control" placeholder="Contoh: PRD001" required>
+                        <input type="text" name="kode_produk" id="kode_produk" class="form-control" placeholder="kode_produk" required>
                     </div>
                     <div class="form-group">
                         <label for="nama_produk">Nama Produk</label>
-                        <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Contoh: TV Samsung 40 inch" required>
+                        <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="nama_produk" required>
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga</label>
-                        <input type="number" name="harga" id="harga" class="form-control" placeholder="Contoh: 2500000" min="0" required>
+                        <input type="number" name="harga" id="harga" class="form-control" placeholder="harga" min="0" required>
                     </div>
                     <div class="form-group">
                         <label for="stok">Stok</label>

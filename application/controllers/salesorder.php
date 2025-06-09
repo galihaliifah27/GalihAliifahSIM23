@@ -43,7 +43,6 @@ class Salesorder extends CI_Controller {
     $data['pelanggan'] = $this->Pelanggan_model->get_all_pelanggan();
     $data['sales'] = $this->Sales_model->get_all_sales();
     $data['produk'] = $this->Produk_model->get_all_produk();
-    $data['status'] = $this->Produk_model->get_all_produk();
 
     if (!$data['salesorder']) {
         show_404(); // jika id tidak ditemukan
@@ -56,7 +55,9 @@ class Salesorder extends CI_Controller {
 
 public function edit_status($id)
 {
+    $this->load->model('Statusorder_model');
     $data['salesorder'] = $this->Salesorder_model->getById($id);
+    $data['status'] = $this->Statusorder_model->get_all_status();
 
     if (!$data['salesorder']) {
         show_404();
@@ -66,6 +67,7 @@ public function edit_status($id)
     $this->load->view('salesorder/edit_status', $data);
     $this->load->view('templates/footer');
 }
+
 public function update_status($id)
 {
     $status = $this->input->post('status');
@@ -209,7 +211,7 @@ public function update_status($id)
     }
 
     // Hapus sales order
-    public function hapus($idso) {
+    public function delete($idso) {
         if ($this->Salesorder_model->delete_order($idso)) {
             $this->session->set_flashdata('success', 'Sales order berhasil dihapus');
         } else {

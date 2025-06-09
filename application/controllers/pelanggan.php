@@ -36,10 +36,26 @@ class Pelanggan extends CI_Controller {
         redirect('pelanggan');
     }
 
-    public function hapus($id) {
-        $this->Pelanggan_model->delete_pelanggan($id);
-        redirect('pelanggan');
+   public function hapus($id) {
+    // Ambil semua salesorder milik pelanggan ini
+    $sales_orders = $this->db->get_where('salesorder', ['idpelanggan' => $id])->result();
+
+    foreach ($sales_orders as $so) {
+        // Hapus detail_so berdasarkan idso
+        $this->db->where('idso', $so->idso);
+        $this->db->delete('detail_so');
+
+        // Hapus salesorder itu sendiri
+        $this->db->where('idso', $so->idso);
+        $this->db->delete('salesorder');
     }
+
+    // Setelah aman, hapus pelanggan
+    $this->Pelanggan_model->delete_pelanggan($id);
+
+    $this->session->set_flashdata('success', 'Pelanggan dan data terkait berhasil dihapus.');
+    redirect('pelanggan');
+}
 
     public function edit($id) {
         $data['pelanggan'] = $this->Pelanggan_model->get_pelanggan_by_id($id);

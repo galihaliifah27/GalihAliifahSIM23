@@ -110,16 +110,16 @@ class Salesorder_model extends CI_Model {
 
         return $this->db->trans_status();
     }
-    public function getById($id)
-{
-    return $this->db->get_where('salesorder', ['idso' => $id])->row_array();
-}
 
-public function getDetailById($id)
-{
-    return $this->db->get_where('detail_so', ['idso' => $id])->result_array();
-}
- public function get_laporan_salesorder($tanggal_dari, $tanggal_sampai) {
+    public function getById($id) {
+        return $this->db->get_where('salesorder', ['idso' => $id])->row_array();
+    }
+
+    public function getDetailById($id) {
+        return $this->db->get_where('detail_so', ['idso' => $id])->result_array();
+    }
+
+    public function get_laporan_salesorder($tanggal_dari, $tanggal_sampai) {
         $this->db->select('so.*, p.nama as nama_pelanggan, s.nama_sales');
         $this->db->from('salesorder so');
         $this->db->join('pelanggan p', 'so.idpelanggan = p.idpelanggan');
@@ -127,6 +127,12 @@ public function getDetailById($id)
         $this->db->where('so.tanggal >=', $tanggal_dari);
         $this->db->where('so.tanggal <=', $tanggal_sampai);
         $this->db->order_by('so.tanggal', 'ASC');
-        return $this->db->get()->result(); // result array objek
+        return $this->db->get()->result(); // result objek
+    }
+
+    // Ini method yang kamu panggil dari controller
+    public function updateSalesOrder($idso, $data) {
+        $this->db->where('idso', $idso);
+        return $this->db->update('salesorder', $data);
     }
 }

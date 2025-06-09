@@ -13,15 +13,15 @@
                 <form action="<?= base_url('pelanggan/insert'); ?>" method="POST">
                     <div class="form-group">
                         <label for="nama">Nama Pelanggan</label>
-                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Contob : Azka" required>
+                        <input type="text" name="nama" id="nama" class="form-control" placeholder="nama" required>
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Contoh: Jl. Kepo" required>
+                        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="alamat" required>
                     </div>
                     <div class="form-group">
                         <label for="no_telp">No Telepon</label>
-                        <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder="Contoh: 081234567890" required>
+                        <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder="no_telp" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>

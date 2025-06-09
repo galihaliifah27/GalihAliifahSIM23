@@ -46,9 +46,16 @@ class Produk extends MY_Controller {
     }
 
     public function hapus($idproduk){
-        $this->Produk_model->delete_produk($idproduk);
-        redirect('produk');
-    }
+    // Hapus terlebih dahulu data terkait di detail_so
+    $this->db->where('idproduk', $idproduk);
+    $this->db->delete('detail_so');
+
+    // Kemudian hapus data produk
+    $this->Produk_model->delete_produk($idproduk);
+
+    $this->session->set_flashdata('success', 'Produk dan detail SO terkait berhasil dihapus.');
+    redirect('produk');
+}
 
     public function edit($idproduk){
         $data['produk'] = $this->Produk_model->get_produk_by_id($idproduk);
