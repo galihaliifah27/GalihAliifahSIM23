@@ -50,6 +50,7 @@ class Salesorder_model extends CI_Model {
 
         return $this->db->trans_status();
     }
+    
 
     public function update_order($idso, $data, $details) {
         $this->db->trans_start();

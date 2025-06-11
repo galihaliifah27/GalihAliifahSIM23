@@ -10,11 +10,7 @@ class Statusorder_model extends CI_Model {
     public function insert_status($data) {
         return $this->db->insert('status_order', $data);
     }
-    public function get_all_status()
-    {
-        return $this->db->get('status')->result_array(); // pastikan nama tabelnya benar
-    }
-    
+
     public function get_status_by_id($id) {
         return $this->db->get_where('status_order', ['idstatus' => $id])->row_array();
     }

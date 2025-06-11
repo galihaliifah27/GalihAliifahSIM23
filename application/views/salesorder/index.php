@@ -28,9 +28,9 @@
             <div class="card-body">
                 <a href="<?= base_url('salesorder/tambah'); ?>" class="btn btn-primary mb-3">Tambah Sales Order</a>
 
-                <?php if($this->session->flashdata('success')): ?>
+                <?php if ($this->session->flashdata('success')): ?>
                     <div class="alert alert-success"><?= $this->session->flashdata('success') ?></div>
-                <?php elseif($this->session->flashdata('error')): ?>
+                <?php elseif ($this->session->flashdata('error')): ?>
                     <div class="alert alert-danger"><?= $this->session->flashdata('error') ?></div>
                 <?php endif; ?>
 
@@ -57,10 +57,11 @@
                                     <td><?= ucfirst($so['status']) ?></td>
                                     <td>Rp <?= number_format($so['total_harga'], 0, ',', '.') ?></td>
                                     <td>
-    <a href="<?= base_url('salesorder/edit/'.$so['idso']) ?>" class="btn btn-sm btn-info">Edit</a>
-    <a href="<?= base_url('salesorder/edit_status/'.$so['idso']) ?>" class="btn btn-sm btn-warning">Edit Status</a>
-    <a href="<?= base_url('salesorder/delete/'.$so['idso']) ?>" onclick="return confirm('Yakin hapus sales order ini?')" class="btn btn-sm btn-danger">Hapus</a>
-</td>
+                                        <a href="<?= base_url('salesorder/edit/' . $so['idso']) ?>" class="btn btn-sm btn-info">Edit</a>
+                                        <a href="<?= base_url('salesorder/edit_status/' . $so['idso']) ?>" class="btn btn-sm btn-warning">Edit Status</a>
+                                        <a href="<?= base_url('salesorder/delete/' . $so['idso']) ?>" onclick="return confirm('Yakin hapus sales order ini?')" class="btn btn-sm btn-danger">Hapus</a>
+
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

@@ -21,7 +21,6 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Update Status</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -32,22 +31,21 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="<?= base_url('Salesorder/edit/' . $salesorder['status']); ?>" method="POST">
-                <div class="form-group">
-    <label for="status">Status</label>
-    <select class="form-control" name="status" id="status" required>
-    <?php foreach ($status as $s): ?>
-        <option value="<?= $s['status']; ?>" <?= $salesorder['status'] == $s['status'] ? 'selected' : ''; ?>>
-            <?= $s['status']; ?>
-        </option>
-    <?php endforeach; ?>
-</select>
-
-</div>
-
+                <form action="<?= base_url('Salesorder/update_status/' . $salesorder['idso']); ?>" method="POST">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" name="status" id="status" required>
+                            <?php foreach ($status_order as $s): ?>
+                                <option value="<?= $s['status']; ?>" <?= $salesorder['status'] == $s['status'] ? 'selected' : ''; ?>>
+                                    <?= $s['status']; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                     <a href="<?= base_url('salesorder'); ?>" class="btn btn-secondary">Batal</a>
                 </form>
+
             </div>
             <div class="card-footer">
             </div>
