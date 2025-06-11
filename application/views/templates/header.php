@@ -244,7 +244,7 @@
               <!-- ROLE MANAGER -->
                 <?php if($level == 'manager'): ?>
               <li class="nav-item">
-              <a href="<?=base_url('laporan');?>" class="nav-link">
+              <a href="<?=base_url('salesorder/laporan');?>" class="nav-link">
                   <i class="far fa-newspaper nav-icon"></i>
                   <p>Laporan</p>
                 </a>
